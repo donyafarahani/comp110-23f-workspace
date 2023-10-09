@@ -6,19 +6,15 @@ def all(num_list: list[int], num: int) -> bool:
     """This function finds if all the elements of a list are the same value as an integer."""
     value: int = 0
     i: int = 0
-
     if len(num_list) == 0:
         return False
-    
     while i < len(num_list):
         if num_list[i] == num:
             value += 1
         else: 
             return False
         i += 1
-
-        if value == len(num_list):
-            return True
+    return True
 
 
 def max(num_list: list[int]) -> int:
