@@ -136,9 +136,6 @@ def main() -> None:
     water.hideturtle()
     sky.hideturtle()
     star.hideturtle()
-    
-    # TODO: Declare your Turtle variable(s) here.
-    # TODO: Call the procedures you define and pass your Turtle(s) as an argument.
 
     draw_water(water, -420, -375, 850)
     draw_sky(sky, -420, 473, 850)
@@ -150,6 +147,5 @@ def main() -> None:
     done()
 
 
-# TODO: Use the __name__ is "__main__" idiom shown in class
 if __name__ == "__main__":
     main()
