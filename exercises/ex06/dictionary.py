@@ -25,7 +25,7 @@ def favorite_color(given_dict: dict[str, str]) -> str:
         else: 
             color_count[given_dict[key]] = 1
 
-    fav_color: str
+    fav_color: str = ''
     highest_color_count: int = 0
 
     for key in color_count:
@@ -65,7 +65,8 @@ def alphabetizer(given_list: list[str]) -> dict[str, list[str]]:
 def update_attendance(log: dict[str, list[str]], week_day: str, student: str) -> dict[str, list[str]]:
     """Function will update with log of days (key) and list of students (value) with the students that attend on specified days."""
     if week_day in log:
-        log[week_day].append(student)
+        if not (student in log[week_day]):
+            log[week_day].append(student)
     else: 
         log[week_day] = [student]
     return log
