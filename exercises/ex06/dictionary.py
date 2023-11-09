@@ -51,17 +51,13 @@ def count(given_list: list[str]) -> dict[str, int]:
 def alphabetizer(given_list: list[str]) -> dict[str, list[str]]:
     """Each key is a unique letter from alphabet and its value is a list of words, taken from given_list, that begin with that unique letter."""
     my_dict: dict[str, list[str]] = {}
-    lowercase_list: list[str] = []
 
     for word in given_list:
-        lowercase_word = word.lower()
-        lowercase_list.append(lowercase_word)
-
-    for word in lowercase_list:
-        if word[0] in my_dict:
-            my_dict[word[0]].append(word)
+        lowercased = word.lower()
+        if lowercased[0] in my_dict:
+            my_dict[lowercased[0]].append(word)
         else:
-            my_dict[word[0]] = [word]
+            my_dict[lowercased[0]] = [word]
 
     return my_dict
 
