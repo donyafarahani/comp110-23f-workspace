@@ -13,29 +13,18 @@ class Point:
         self.x = x_init
         self.y = y_init
 
-    #def scale_by(self, factor: int) -> None:
-       # """Method that updates the x and y values."""
-        #self.x *= factor
-        #self.y *= factor
-
-    #def scale(self, factor: int) -> Point:
-       # """Method that creates a new point."""
-       # return Point(self.x * factor, self.y * factor)
-    
     def __str__(self) -> str:
-
+        """This method returns the values of self.x and self.y as a string to be later nicely printed."""
         return f"x: {self.x}; y: {self.y}"
     
-
-    def __mul__(self, factor) -> str:
+    def __mul__(self, factor: int | float) -> Point:
         """Multiplycation operator overload."""
-        new_x: self.x * factor
-        new_y: self.y * factor
-        return f"x: {new_x}; y: {new_y}"
+        self.x *= factor
+        self.y *= factor
+        return Point(self.x, self.y)
     
-
-    def __add__(self, add_val) -> str:
+    def __add__(self, add_val: int | float) -> Point:
         """Addition operator overload."""
-        new_x: self.x + add_val
-        new_y: self.y * add_val
-        return f"x: {new_x}; y: {new_y}"
+        self.x += add_val
+        self.y += add_val
+        return Point(self.x, self.y)
