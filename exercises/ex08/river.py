@@ -1,5 +1,7 @@
 """File to define River class"""
 
+__author__ = "730661618"
+
 from exercises.ex08.fish import Fish
 from exercises.ex08.bear import Bear
 
@@ -17,43 +19,85 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        fish_copy: list[Fish] = []
+        for f in self.fish:
+            if f.age <= 3: 
+                fish_copy.append(f)
+        self.fish = fish_copy
+        
+        bears_copy: list[Bear] = []
+        for b in self.bears:
+            if b.age <= 5: 
+                bears_copy.append(b)
+        self.bears = bears_copy
+        return None
+    
+    def remove_fish(self, amount: int):
+        """Removes amount many Fish from the River, starting from index 0."""
+        for f in range(amount):
+            self.fish.pop(0)
         return None
 
     def bears_eating(self):
+        for b in self.bears:
+            if len(self.fish) >= 5:
+                Bear.eat(3)
+                self.remove_fish(3)
         return None
     
     def check_hunger(self):
+        bears_copy: list[Bear] = []
+        for b in self.bears:
+            if b.hunger_score > 0:
+                bears_copy.append(b)
+        self.bears = bears_copy
         return None
         
     def repopulate_fish(self):
+        offspring_num: int = (len(self.bears) // 2) * 4
+        self.fish.append(Fish * offspring_num)
         return None
     
     def repopulate_bears(self):
+        offspring_num: int = len(self.bears) // 2
+        self.bears.append(Bear * offspring_num)
         return None
     
     def view_river(self):
-        return None
-            
+        print(f"~~~ Day {self.day}: ~~~\nFish population: {len(self.fish)}\nBear population: {len(self.bears)}")
+
     def one_river_day(self):
         """Simulate one day of life in the river"""
         # Increase day by 1
         self.day += 1
+
         # Simulate one day for all Bears
         for bear in self.bears:
             bear.one_day()
+
         # Simulate one day for all Fish
         for fish in self.fish:
             fish.one_day()
+
         # Simulate Bear's eating
         self.bears_eating()
+
         # Remove hungry Bear's from River
         self.check_hunger()
+
         # Remove old Fish and Bear's from River
         self.check_ages()
+
         # Simulate Fish repopulation
         self.repopulate_fish()
+
         # Simulate Bear repopulation
         self.repopulate_bears()
+
         # Visualize River
         self.view_river()
-            
+
+    def one_river_week(self):
+        for x in range(0, 7):
+            self.one_river_day()
+        return None
